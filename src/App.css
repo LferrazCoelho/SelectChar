@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+.bgHum {
+  background-image: url(./assets/img/bghum.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
