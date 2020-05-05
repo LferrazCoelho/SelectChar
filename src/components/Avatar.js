@@ -1,27 +1,24 @@
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, Fragment } from 'react';
 
 import {
-    Card,
-    CardHeader,
-    CardBody,
     Row,
     Col,
     Container
 } from 'reactstrap';
 
 import Char from './Char'
+import Info from './Info'
 
 import wow from '../assets/img/logo.png'
 
-export default class _Avatar extends React.Component {
+export default class _Avatar extends Component {
     render() {
         return (
             <Fragment>
                 <Container fluid>
                     <Row>
                         <Col className="d-flex justify-content-center">
-                            <img src={wow} alt="logo" style={{ width: '30%' }}/>
+                            <img src={wow} alt="logo" style={{ width: '30%' }} />
                         </Col>
                     </Row>
                     <Row className="m-4">
@@ -31,14 +28,7 @@ export default class _Avatar extends React.Component {
                     </Row>
                     <Row>
                         <Col className="d-flex justify-content-center">
-                            <Card inverse style={{ textAlign:'center', backgroundColor: '#333', borderColor: '#333' }}>
-                                <CardHeader>Athas</CardHeader>
-                                <CardBody>
-                                    <p>
-                                        Raça: Humano | Classe: Paladino | Lvl: {this.props.level}
-                                    </p>
-                                </CardBody>
-                            </Card>
+                            <Info />
                         </Col>
                     </Row>
                 </Container>
@@ -46,5 +36,3 @@ export default class _Avatar extends React.Component {
         )
     }
 };
-
-const Avatar = connect()(_Avatar);
