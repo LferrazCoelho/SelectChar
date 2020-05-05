@@ -35,4 +35,10 @@ export default class _Main extends React.Component {
     }
   };
 
-const Main = connect()(_Main)
+function mapStateToProps(state) {
+    return {
+      level: state.level
+    };
+}
+
+const Main = connect(mapStateToProps)(_Main)

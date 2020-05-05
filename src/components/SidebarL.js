@@ -1,5 +1,7 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { clickUpLvl } from '../actions'
 
 import {
     Card,
@@ -25,8 +27,11 @@ import blo from '../assets/img/blo.png'
 import up from '../assets/open-iconic/svg/chevron-top.svg'
 import down from '../assets/open-iconic/svg/chevron-bottom.svg'
 
-export default class _SidebarL extends React.Component{
+class SidebarL extends Component{
     render() {
+
+        const { clickUpLvl } = this.props;
+      
         return (
             <Fragment>
                 <Card inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
@@ -35,18 +40,17 @@ export default class _SidebarL extends React.Component{
                         <Row>
                             <Col>
                                 <Label>Nome</Label>
-                                <Input type="text" name="" placeholder="Ex: Silvete" />
+                                <Input size="sm" type="text" name="" placeholder="Ex: Silvete" />
+                                <Button size="sm">Verificar</Button>
                             </Col>
                         </Row>
                         <Row className="mt-2">
                             <Col>
                                 <Label>Level</Label>
-                                <Button size="sm" className="ml-2">
-                                    <img 
-                                    src={up} 
-                                    alt="subir level"
-                                    // onClick={() => this.props.dispatch(setUplvl())}
-                                     />
+                                <Button size="sm" className="ml-2"
+                                onClick={() => clickUpLvl()}
+                                >
+                                    <img src={up} alt="subir level" />
                                 </Button>
                                 <Button size="sm" className="ml-1">
                                     <img src={down} alt="descer level" />
@@ -81,4 +85,7 @@ export default class _SidebarL extends React.Component{
     }
 };
 
-const SidebarL = connect()(_SidebarL)
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ clickUpLvl }, dispatch);
+
+export default connect(mapDispatchToProps)(SidebarL);

@@ -18,15 +18,19 @@ export default class _Avatar extends React.Component {
     render() {
         return (
             <Fragment>
-                <Container fluid className="justify-content-center">
+                <Container fluid>
                     <Row>
-                        <Col>
+                        <Col className="d-flex justify-content-center">
                             <img src={wow} alt="logo" style={{ width: '30%' }}/>
                         </Col>
                     </Row>
-                    <Char />
+                    <Row className="m-4">
+                        <Col className="d-flex justify-content-center">
+                            <Char />
+                        </Col>
+                    </Row>
                     <Row>
-                        <Col sm={8}>
+                        <Col className="d-flex justify-content-center">
                             <Card inverse style={{ textAlign:'center', backgroundColor: '#333', borderColor: '#333' }}>
                                 <CardHeader>Athas</CardHeader>
                                 <CardBody>
@@ -43,10 +47,4 @@ export default class _Avatar extends React.Component {
     }
 };
 
-function mapStateToProps(state) {
-    return {
-      level: state.level
-    };
-  }
-
-const Avatar = connect(mapStateToProps)(_Avatar);
+const Avatar = connect()(_Avatar);
