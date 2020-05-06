@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 
 import {
@@ -12,10 +13,12 @@ import SidebarL from './components/SidebarL';
 import Avatar from './components/Avatar';
 import SidebarR from './components/SidebarR';
 
-const bgPage = "bgHum"
 
-export default class App extends Component {
+class App extends Component {
   render () {
+
+    const bgPage = this.props.bg
+    
     return (
       <Container fluid className={`p-5 ${bgPage} `}>
         <Row>
@@ -33,3 +36,11 @@ export default class App extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return{
+    bg: state.bg
+  }
+}
+
+export default connect (mapStateToProps) (App);

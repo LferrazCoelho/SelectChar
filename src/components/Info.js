@@ -7,7 +7,7 @@ import {
     CardBody,
 } from 'reactstrap';
 
-export default class Info extends Component {
+class Info extends Component {
     render () {
         return (
             <Fragment>
@@ -23,3 +23,14 @@ export default class Info extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return{
+        name: state.name,
+        race: state.race,
+        class: state.class,
+        level: state.level
+    }
+}
+
+export default connect (mapStateToProps) (Info);

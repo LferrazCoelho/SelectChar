@@ -1,4 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { upLvl } from '../actions';
+import { downLvl } from '../actions';
 
 import {
     Card,
@@ -24,7 +27,7 @@ import blo from '../assets/img/blo.png'
 import up from '../assets/open-iconic/svg/chevron-top.svg'
 import down from '../assets/open-iconic/svg/chevron-bottom.svg'
 
-export default class SidebarL extends Component{
+class SidebarL extends Component{
     render() {      
         return (
             <Fragment>
@@ -41,10 +44,18 @@ export default class SidebarL extends Component{
                         <Row className="mt-2">
                             <Col>
                                 <Label>Level</Label>
-                                <Button size="sm" className="ml-2">
+                                <Button
+                                size="sm"
+                                className="ml-2"
+                                onClick={() => this.props.dispatch(upLvl())}
+                                >
                                     <img src={up} alt="subir level" />
                                 </Button>
-                                <Button size="sm" className="ml-1">
+                                <Button
+                                size="sm"
+                                className="ml-1"
+                                onClick={() => this.props.dispatch(downLvl())}
+                                >
                                     <img src={down} alt="descer level" />
                                 </Button>
                             </Col>
@@ -76,3 +87,5 @@ export default class SidebarL extends Component{
         )
     }
 };
+
+export default connect() (SidebarL);
