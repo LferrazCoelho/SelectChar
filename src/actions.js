@@ -1,5 +1,4 @@
-import UP_LVL from './types'
-import DOWN_LVL from './types'
+import { UP_LVL, DOWN_LVL } from './types'
 
 export function upLvl() {
     return{

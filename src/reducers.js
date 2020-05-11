@@ -1,20 +1,28 @@
-import { UP_LVL } from './types';
-import { DOWN_LVL } from './types';
+import { UP_LVL, DOWN_LVL } from './types';
 
 var initialState = {
     name: 'Athas',
     race: 'Humano',
     class: 'Paladino',
-    level: 1,
+    level: 10,
     bg: 'bgHum'
 };
 
 function Reducer(state=initialState, action) {
-    switch(action.types) {
+    switch(action.type) {
         case UP_LVL:
-            return {...state, level: state.level + 1};
+            // return {...state, level: state.level + 1};
+            let uplevel = state.level + 10;
+            if ( uplevel >= 60 ) {
+                uplevel = 60;
+            }
+            return {...state, level: uplevel};
         case DOWN_LVL:
-            return {...state, level: state.level - 1};
+            let downlevel = state.level - 10;
+            if ( downlevel <= 10) {
+                downlevel = 10;
+            }
+            return {...state, level: downlevel};
         default:
             return state;
     }

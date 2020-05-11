@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { upLvl } from '../actions';
-import { downLvl } from '../actions';
+import { upLvl, downLvl } from '../actions';
 
 import {
     Card,
