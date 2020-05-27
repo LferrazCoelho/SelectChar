@@ -36,8 +36,46 @@
     transform: rotate(360deg);
   }
 }
+
+/* Inicio - Backgrounds Chars */
 .bgHum {
-  background-image: url(./assets/img/bghum.jpg);
+  background-image: url(./assets/img/bgHum.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
+.bgAna {
+  background-image: url(./assets/img/bgAna.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bgGno {
+  background-image: url(./assets/img/bgAna.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bgElf {
+  background-image: url(./assets/img/bgElf.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bgOrc {
+  background-image: url(./assets/img/bgOrc.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bgTro {
+  background-image: url(./assets/img/bgOrc.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bgTau {
+  background-image: url(./assets/img/bgTau.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bgUnd {
+  background-image: url(./assets/img/bgUnd.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* Fim - Backgrounds Chars */

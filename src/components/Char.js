@@ -1,15 +1,24 @@
 import React, { Component , Fragment } from 'react';
+import { connect } from 'react-redux';
 
-export default class Char extends Component{
+class Char extends Component{
     render() {
         return (
             <Fragment>
                         <img
-                         src="https://www.vippng.com/png/full/49-493882_human-paladin-model-action-figure.png"
-                         alt="humPala"
+                         src={this.props.char}
+                         alt="CharState"
                          style={{ height: '350px' }}
                          />
             </Fragment>
         )
     }
 };
+
+function mapStateToProps(state) {
+    return{
+        char: state.char
+    }
+}
+
+export default connect(mapStateToProps) (Char);

@@ -15,12 +15,9 @@ import SidebarR from './components/SidebarR';
 
 
 class App extends Component {
-  render () {
-
-    const bgPage = this.props.bg
-    
+  render () {    
     return (
-      <Container fluid className={`p-5 ${bgPage} `}>
+      <Container fluid className={`p-5 ${this.props.bg} `}>
         <Row>
           <Col sm={3} className="ml-1 mr-1">
             <SidebarL />

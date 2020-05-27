@@ -1,6 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { upLvl, downLvl } from '../actions';
+
+import { 
+    upLvl,
+    downLvl,
+    nameValue
+} from '../actions';
 
 import {
     Card,
@@ -13,71 +18,73 @@ import {
     Label,
 } from 'reactstrap';
 
-import hum from '../assets/img/hum.png'
-import ana from '../assets/img/ana.png'
-import gno from '../assets/img/gno.png'
-import elf from '../assets/img/elf.png'
-import dra from '../assets/img/dra.png'
-import orc from '../assets/img/orc.png'
-import tro from '../assets/img/tro.png'
-import tau from '../assets/img/tau.png'
-import und from '../assets/img/und.png'
-import blo from '../assets/img/blo.png'
-import up from '../assets/open-iconic/svg/chevron-top.svg'
-import down from '../assets/open-iconic/svg/chevron-bottom.svg'
+import TabRace from './TabRace'
+import TabClass from './TabClass'
+
+import up from '../assets/img/up.png'
+import down from '../assets/img/down.png'
 
 class SidebarL extends Component{
-    render() {      
+    state = {
+        nameInput: ''
+    }
+
+    nameChange = e => {
+        this.setState({
+            nameInput: e.target.value
+        })
+    }
+
+    render() { 
+
+        const { nameInput } = this.state;
+
         return (
             <Fragment>
                 <Card inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
-                    <CardHeader>Caracteristicas do Avatar</CardHeader>
+                    <CardHeader className="text-center">Crie seu personagem</CardHeader>
                     <CardBody>
                         <Row>
-                            <Col>
+                            <Col className="d-flex">
                                 <Label>Nome</Label>
-                                <Input size="sm" type="text" name="" placeholder="Ex: Silvete" />
-                                <Button size="sm">Verificar</Button>
+                                <Input 
+                                className="mr-1 ml-1"
+                                // value={nameInput}
+                                size="sm"
+                                type="text"
+                                name="" 
+                                // onClick={this.nameChange}
+                                placeholder="Ex: Athas" />
+                                <Button 
+                                className="mr-1 ml-1"
+                                size="sm"
+                                // onClick={() => this.props.dispatch(nameValue(nameInput))}
+                                >Verificar</Button>
                             </Col>
                         </Row>
                         <Row className="mt-2">
-                            <Col>
-                                <Label>Level</Label>
-                                <Button
-                                size="sm"
-                                className="ml-2"
+                            <Col className="d-flex justify-content-center">
+                                <Label className="m-1">Level</Label>
+                                <img src={up}
+                                className="m-1"
+                                alt="subir level"
                                 onClick={() => this.props.dispatch(upLvl())}
-                                >
-                                    <img src={up} alt="subir level" />
-                                </Button>
-                                <Button
-                                size="sm"
-                                className="ml-1"
+                                />
+                                <img src={down}
+                                className="m-1"
+                                alt="subir level"
                                 onClick={() => this.props.dispatch(downLvl())}
-                                >
-                                    <img src={down} alt="descer level" />
-                                </Button>
+                                />
                             </Col>
                         </Row>
-                        <Row className="mt-2">
-                            <Col>
-                                <Label>Raça</Label>
+                        <Row className="d-flex justify-content-center">
+                            <Col className="d-flex justify-content-center" sm={12}>
+                                <TabRace />
                             </Col>
                         </Row>
-                        <Row className="pl-2 pr-2">
-                            <Col>
-                                <Button size="sm"><img src={hum} alt="Humanos" /></Button>
-                                <Button size="sm"><img src={ana} alt="Humanos" /></Button>
-                                <Button size="sm"><img src={gno} alt="Humanos" /></Button>
-                                <Button size="sm"><img src={elf} alt="Humanos" /></Button>
-                                <Button size="sm"><img src={dra} alt="Humanos" /></Button>
-                            </Col>
-                            <Col>
-                                <Button size="sm"><img src={orc} alt="Humanos" /></Button>
-                                <Button size="sm"><img src={tro} alt="Humanos" /></Button>
-                                <Button size="sm"><img src={tau} alt="Humanos" /></Button>
-                                <Button size="sm"><img src={und} alt="Humanos" /></Button>
-                                <Button size="sm"><img src={blo} alt="Humanos" /></Button>
+                        <Row className="d-flex justify-content-center">
+                            <Col className="d-flex justify-content-center" sm={12}>
+                                <TabClass />
                             </Col>
                         </Row>
                     </CardBody>
@@ -87,4 +94,10 @@ class SidebarL extends Component{
     }
 };
 
-export default connect() (SidebarL);
+function mapStateToProps (state) {
+    return {
+        name: state.nameValue
+    }
+}
+
+export default connect(mapStateToProps) (SidebarL);

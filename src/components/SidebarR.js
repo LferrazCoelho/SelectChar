@@ -1,4 +1,6 @@
 import React, { Component , Fragment } from 'react';
+import { connect } from 'react-redux';
+
 import {
     Card,
     CardHeader,
@@ -7,7 +9,7 @@ import {
     Row
 } from 'reactstrap';
 
-export default class SidebarR extends Component{
+class SidebarR extends Component{
     render() {
         return (
             <Fragment>
@@ -44,3 +46,11 @@ export default class SidebarR extends Component{
         )
     }
 };
+
+function mapStateToProps(state) {
+    return{
+        cardColor: state.cardColor
+    }
+}
+
+export default connect (mapStateToProps) (SidebarR);
